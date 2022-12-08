@@ -1,17 +1,10 @@
 <div>
-<h1>EMPLEADOS</h1>
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Registro de empleados</h3>
+    <h1>EMPLEADOS</h1>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">EDITAR EMPLEADOS</h3>
         </div>
-        <div class="card-body">
-            @if (array_key_exists('message',$errores))
-            <div class="alert alert-danger">
-                <b>{{$errores['message']}}</b>
-            </div>
-            @endif
-
-            <form wire:submit.prevent="guardar">
+        <form wire:submit.prevent="GuardarCambios">
             <div class="row">
                     <div class="col">
                         {{-- <select class="form-control" name="" id="">
@@ -63,63 +56,6 @@
 
                 </div>
             </form>
-
-
-        </div>
+    </div>
 </div>
-    <div class="card">
-        <div class="card-header">
-        <h3 class="card-title">Empleados</h3>
-        </div>
 
-        <div class="card-body">
-        <table class="table table-bordered">
-        <thead>
-        <tr>
-        <th style="width: 10px">ID</th>
-        <th>ID Empresa</th>
-        <th>Nombre</th>
-        <th>DNI</th>
-        <th>EMAIL</th>
-        <th>TELEFONO</th>
-        <th>LOCALIDAD</th>
-        <th>DIRECCION</th>
-        <th>ACCION</th>
-        </tr>
-        </thead>
-        <tbody>
-
-             @foreach ($empleados as $empleado)
-
-            <tr>
-                <td>{{$empleado['id']}}</td>
-                <td>{{$empleado['idEmpresa']}}</td>
-                <td>{{$empleado['NombreEmpleado']}}</td>
-                <td>{{$empleado['DNI']}}</td>
-                <td>{{$empleado['Email']}}</td>
-                <td>{{$empleado['Telefono']}}</td>
-                <td>{{$empleado['Localidad']}}</td>
-                <td>{{$empleado['Direccion']}}</td>
-                <td>
-                    <button wire:click='eliminar({{$empleado['id']}})' class="btn btn-danger btn-sm" title="eliminar"><i class="fa fa-trash"></i></button>
-                    <a href="UsuariosIndex/{{$empleado['id']}}/editar" class="btn btn-primary btn-sm" title="modificar"><i class="fa fa-edit"></i></a>
-                </td>
-                </tr>
-            @endforeach
-
-
-        </tbody>
-        </table>
-        </div>
-
-        <div class="card-footer clearfix">
-        <ul class="pagination pagination-sm m-0 float-right">
-        <li class="page-item"><a class="page-link" href="#">«</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">»</a></li>
-        </ul>
-        </div>
-        </div>
-</div>

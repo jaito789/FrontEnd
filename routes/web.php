@@ -6,7 +6,10 @@ use App\Http\Livewire\Empresas;
 use App\Http\Livewire\UserIndex;
 use App\Http\Livewire\UsersIndex;
 use App\Http\Livewire\AsignarTarea;
+use App\Http\Livewire\EditarTareas;
+use App\Http\Livewire\EditarEmpresa;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\EditarEmpleados;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AmiiboController;
@@ -43,9 +46,14 @@ Route::get('/contador',Contador::class);
 
 Route::get('/usuarios',UserIndex::class);
 
-////////////////////////////////EXAMEN/////////////////////////
+////////////////////////////////EXAMEN METODO/////////////////////////
 Route::get('/UsuariosIndex',UsersIndex::class);
 Route::get('/EmpresaIndex',Empresas::class);
 Route::get('/TareasIndex',Tareas::class);
 Route::get('/TareaAsignadaIndex',AsignarTarea::class);
+//////////////////////////////PUT//////////////////////////////
+Route::get('/TareasIndex/{id}/editar',EditarTareas::class);
+Route::get('/EmpresaIndex/{id}/editar',EditarEmpresa::class);
+Route::get('/UsuariosIndex/{id}/editar',EditarEmpleados::class);
+
 

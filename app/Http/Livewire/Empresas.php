@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Http;
 
 class Empresas extends Component
 {
+    public $idempresas;
+    public $listeners = ['eliminarempresa'];
+    public $errores = [];
     public $datos = [];
+
     public function render()
     {
         $response = Http::get('http://127.0.0.1:8000/api/empresas');
@@ -22,10 +26,18 @@ class Empresas extends Component
         if ($response->successful()){
             return redirect('/EmpresaIndex');
         } else {
-            dd($response->json());
+            $this->errores = $response->json();
+            //dd($response->json());
         }
+
         //$empresa = $response->json();
         //dd($this->datos);
         //dd('empresa');
+    }
+    public function eliminar($id){
+        $this->idempresas = $id;
+        Http::delete('http://127.0.0.1:8000/api/empresa/eliminar/' . $this->idempresas);
+        //dd($this->idtareas);
+        return redirect('/EmpresaIndex');
     }
 }

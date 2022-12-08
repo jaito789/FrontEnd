@@ -6,34 +6,32 @@
         </div>
         <div class="card-body">
             <form wire:submit.prevent="addEmpTarea">
-            <div class="row">
-                <div class="col">
-                    <Label>tareasemp</Label>
-                    <select class="form-control" name="" id="">
-                        <option value="">----empleados----</option>
-                        @foreach ($tareasemp as $tareaS)
-                            <option value="{{ $tareaS['id'] }}">{{ $tareaS['NombreEmpleado'] }}</option>
-                        @endforeach
-                    </select>
+                <div class="row">
+                    <div class="col">
+                        <Label>tareasemp</Label>
+                        <select wire:model="datos.idEmpleado" class="form-control" name="" id="">
+                            <option value="">----Empleados----</option>
+                             @foreach ($empleados as $empleado)
+                                <option value="{{ $empleado['id'] }}">{{ $empleado['NombreEmpleado'] }}</option>
+                            @endforeach
+                        </select>
 
 
-                    <br>
-                    <button wire:click="submit" class="btn btn-success">Registrar</button>
+                        <br>
+                        <button type="submit" class="btn btn-success">Registrar</button>
+                    </div>
+                    <div class="col">
+                        <Label>TAREAS POR ASIGNAR</Label>
+                        <select wire:model="datos.idTarea" class="form-control" name="" id="">
+                            <option value="">----Tareas----</option>
+                            @foreach ($tareas as $tarea)
+                                <option value="{{ $tarea['id'] }}">{{ $tarea['NombreTarea'] }}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+
                 </div>
-                <div class="col">
-                    <Label>TAREAS POR ASIGNAR</Label>
-                    <select class="form-control" name="" id="">
-                        <option value="">----empleados----</option>
-                        @foreach ($tareas as $tarea)
-                            <option value="{{ $tarea['id'] }}">{{ $tarea['NombreTarea'] }}</option>
-                        @endforeach
-                    </select>
-
-                </div>
-
-            </div>
-
-
             </form>
         </div>
     </div>
@@ -46,18 +44,19 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th style="width: 10px">ID</th>
-                        <th>ID Empresa</th>
                         <th>Nombre Empleado</th>
                         <th>TAREA ASIGNADA</th>
+                        <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tareasemp as $tareaS)
+                       @foreach ($tareasemp as $tareaS)
                         <tr>
-                            <td>{{ $tareaS['id'] }}</td>
-                            <td>{{ $tareaS['idEmpleado'] }}</td>
+                            <td>{{ $tareaS['NombreEmpleado'] }}</td>
                             <td>{{ $tareaS['NombreTarea'] }}</td>
+                            <td>
+                                <button wire:click='eliminar("{{$tareaS['id']}}")' class="btn btn-danger btn-sm" title="eliminar"><i class="fa fa-trash"></i></button>
+                            </td>
                         </tr>
                     @endforeach
 
