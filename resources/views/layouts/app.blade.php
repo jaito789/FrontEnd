@@ -31,7 +31,7 @@
     @livewireStyles
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sidebar-closed sidebar-collapse" style="height: auto;">
     <div class="wrapper">
 
         <!-- Preloader -->
